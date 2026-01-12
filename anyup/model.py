@@ -21,6 +21,8 @@ class AnyUp(nn.Module):
             num_heads=4,
             init_gaussian_derivatives=False,
             use_natten=False,
+            use_flash=False,
+            flash_window_size=5,
             lfu_dim=None,
             **kwargs,
     ):
@@ -41,6 +43,8 @@ class AnyUp(nn.Module):
         # Cross-attention
         self.cross_decode = setup_cross_attention_block(
             use_natten=use_natten,
+            use_flash=use_flash,
+            flash_window_size=flash_window_size,
             qk_dim=qk_dim,
             num_heads=num_heads,
             window_ratio=window_ratio
